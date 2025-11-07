@@ -1,26 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* Legacy variables for compatibility */
+  --background: #f8fafc;
+  --foreground: #1e293b;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* New Design System Colors */
+  --color-primary: #28beef;
+  --color-primary-hover: #1fa5d9;
+  --color-primary-active: #168bb8;
+  --color-primary-focus: #b3e8ff;
+  --color-primary-disabled: #d1f2ff;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-accent: #ec1c24;
+  --color-accent-hover: #d8181f;
+  --color-accent-active: #b5141a;
+  --color-accent-focus: #f8c5c7;
+  --color-accent-disabled: #f7b1b5;
+
+  --color-background: #f9fafb;
+  --color-surface: #ffffff;
+  --color-border: #e5e7eb;
+  --color-border-strong: #cbd5e1;
+  --color-text: #1a1a1a;
+  --color-text-muted: #6b7280;
+  --color-text-inverse: #ffffff;
+  --color-text-primary: #28beef;
+
+  --color-black: #000000;
+  --color-black-hover: #1a1a1a;
+  --color-black-active: #333333;
+
+  --color-success: #22c55e;
+  --color-success-hover: #16a34a;
+  --color-warning: #f59e0b;
+  --color-warning-hover: #d97706;
+  --color-error: #dc2626;
+  --color-error-hover: #b91c1c;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', system-ui, sans-serif;
 }
+
+/* Smooth scrolling for better UX */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom utility classes */
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-active) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button System Documentation */
+/* 
+  Use the Button component from @/components/Button for consistent button styling.
+  
+  Available variants:
+  - primary: Main action buttons with primary brand color
+  - secondary: Secondary actions with neutral styling  
+  - accent: High-attention actions with accent color
+  - outline: Outlined buttons with transparent background
+  - ghost: Text-only buttons with subtle hover effects
+  - destructive: Delete/remove actions with error color
+  - success: Confirmation actions with success color
+  
+  Available sizes:
+  - sm: Small buttons (px-3 py-2 text-sm)
+  - default: Standard buttons (px-6 py-3 text-base)  
+  - lg: Large buttons (px-8 py-4 text-lg)
+  - xl: Extra large buttons (px-10 py-5 text-xl)
+  - icon: Icon-only buttons (p-2)
+  
+  Additional props:
+  - fullWidth: Makes button span full container width
+  - loading: Shows loading spinner and disables button
+  - leftIcon/rightIcon: Adds icons to button content
+  - disabled: Disables button interaction
+  
+  Example usage:
+  <Button variant="primary" size="lg" fullWidth>
+    Get Started
+  </Button>
+  
+  <Button variant="outline" leftIcon={<Icon />} loading={isSubmitting}>
+    Submit Form
+  </Button>
+*/
