@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 /*
   Server-side protections added:
@@ -7,8 +7,7 @@ import nodemailer from 'nodemailer';
   - Optional reCAPTCHA v3 verification when RECAPTCHA_SECRET is provided and client supplies `recaptchaToken`
 
   Env vars used:
-  - GMAIL_USER (Gmail address)
-  - GMAIL_PASSWORD (Gmail app password)
+  - RESEND_API_KEY (Resend API key)
   - EMAIL_TO (recipient address)
   - RECAPTCHA_SECRET (optional)
 */
@@ -18,28 +17,18 @@ const RATE_LIMIT_WINDOW_MS = parseInt(process.env.RATE_LIMIT_WINDOW_MS || '60000
 const RATE_LIMIT_MAX = parseInt(process.env.RATE_LIMIT_MAX || '5'); // default 5 requests per window
 const ipRequestMap: Map<string, number[]> = new Map();
 
-// Gmail configuration
-const GMAIL_USER = process.env.GMAIL_USER;
-const GMAIL_PASSWORD = process.env.GMAIL_PASSWORD;
+// Resend configuration
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const EMAIL_TO = process.env.EMAIL_TO || 'thuhu.mahlangu@gmail.com';
-const EMAIL_FROM = process.env.EMAIL_FROM || GMAIL_USER || 'no-reply@rocxiongroup.co.za';
+const EMAIL_FROM = process.env.EMAIL_FROM || 'onboarding@resend.dev';
 
-// Create transporter for Gmail
-let transporter: nodemailer.Transporter | null = null;
-if (GMAIL_USER && GMAIL_PASSWORD) {
-  transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: GMAIL_USER,
-      pass: GMAIL_PASSWORD,
-    },
-  });
-}
+// Initialize Resend client
+const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null;
 
 export async function POST(request: NextRequest) {
   try {
-    if (!transporter) {
-      console.error('Gmail credentials are not configured');
+    if (!resend) {
+      console.error('Resend API key is not configured');
       return NextResponse.json({ error: 'Email service not configured' }, { status: 500 });
     }
 
@@ -110,7 +99,6 @@ export async function POST(request: NextRequest) {
 
     // Compose email
     const subject = `Website Contact: ${name}`;
-    const textBody = `Full Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\n\nMessage:\n${message}`;
     const htmlBody = `<p><strong>Full Name:</strong> ${name}</p>
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
@@ -118,31 +106,33 @@ export async function POST(request: NextRequest) {
       <p>${message.replace(/\n/g, '<br/>')}</p>`;
 
     // Send email to recipient
-    await transporter.sendMail({
+    const response = await resend.emails.send({
+      from: EMAIL_FROM,
       to: EMAIL_TO,
-      from: GMAIL_USER,
       subject,
-      text: textBody,
       html: htmlBody,
     });
+
+    if (response.error) {
+      console.error('Resend error:', response.error);
+      return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
+    }
 
     console.log('Contact form email sent to recipient:', EMAIL_TO, { name, email, phone });
 
     // Send automated confirmation email to the visitor (best-effort)
     try {
       const confirmSubject = `Thanks for contacting Rocxion Group`;
-      const confirmText = `Hi ${name},\n\nThank you for reaching out. We received your message and will get back to you within 24 hours.\n\nSummary of your message:\n${message}\n\nBest regards,\nRocxion Group`;
       const confirmHtml = `<p>Hi ${name},</p>
         <p>Thank you for reaching out. We received your message and will get back to you within 24 hours.</p>
         <h4>Summary of your message:</h4>
         <p>${message.replace(/\n/g, '<br/>')}</p>
         <p>Best regards,<br/>Rocxion Group</p>`;
 
-      await transporter.sendMail({
+      await resend.emails.send({
+        from: EMAIL_FROM,
         to: email,
-        from: GMAIL_USER,
         subject: confirmSubject,
-        text: confirmText,
         html: confirmHtml,
       });
       console.log('Confirmation email sent to visitor:', email);
