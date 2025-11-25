@@ -19,7 +19,7 @@ const ipRequestMap: Map<string, number[]> = new Map();
 
 // Resend configuration
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const EMAIL_TO = process.env.EMAIL_TO || 'thuhu.mahlangu@gmail.com';
+const EMAIL_TO = (process.env.EMAIL_TO || 'info@rocxion.co.za,rramokolo@gmail.com').split(',').map(e => e.trim());
 const EMAIL_FROM = process.env.EMAIL_FROM || 'onboarding@resend.dev';
 
 // Initialize Resend client
@@ -118,7 +118,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
     }
 
-    console.log('Contact form email sent to recipient:', EMAIL_TO, { name, email, phone });
+    console.log('Contact form email sent to recipients:', EMAIL_TO, { name, email, phone });
 
     // Send automated confirmation email to the visitor (best-effort)
     try {
