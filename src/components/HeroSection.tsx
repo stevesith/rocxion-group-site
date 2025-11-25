@@ -105,7 +105,7 @@ const HeroSection = ({
       {/* Optional gradient overlay for extra contrast */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-30 pointer-events-none" />
 
-  <div className="relative z-40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+  <div className="relative z-40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pb-28 sm:pb-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
