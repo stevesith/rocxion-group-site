@@ -32,7 +32,7 @@ export default function Services() {
         "3D modeling and simulations",
         "Performance predictions and analysis",
         "Equipment selection and optimization",
-        "Grid-tie and off-grid solutions"
+        "Hybrid and off-grid solutions"
       ]
     },
     {
@@ -200,7 +200,7 @@ export default function Services() {
               {
                 icon: <Bullseye className="w-10 h-10 text-primary-500" />,
                 title: "Expert Team",
-                description: "ECB-accredited professionals with extensive solar industry experience"
+                description: "ECB-accredited specialists bringing deep experience in solar energy, electrical installations, and cutting-edge technological systems."
               },
               {
                 icon: <Power className="w-10 h-10 text-primary-500" />,

@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import sgMail from '@sendgrid/mail';
-import Redis from 'ioredis';
+import nodemailer from 'nodemailer';
 
 /*
   Server-side protections added:
@@ -8,9 +7,9 @@ import Redis from 'ioredis';
   - Optional reCAPTCHA v3 verification when RECAPTCHA_SECRET is provided and client supplies `recaptchaToken`
 
   Env vars used:
-  - SENDGRID_API_KEY
-  - EMAIL_FROM
-  - EMAIL_TO
+  - GMAIL_USER (Gmail address)
+  - GMAIL_PASSWORD (Gmail app password)
+  - EMAIL_TO (recipient address)
   - RECAPTCHA_SECRET (optional)
 */
 
@@ -19,62 +18,35 @@ const RATE_LIMIT_WINDOW_MS = parseInt(process.env.RATE_LIMIT_WINDOW_MS || '60000
 const RATE_LIMIT_MAX = parseInt(process.env.RATE_LIMIT_MAX || '5'); // default 5 requests per window
 const ipRequestMap: Map<string, number[]> = new Map();
 
-// Redis client (optional). If REDIS_URL is provided, use Redis for rate limiting across instances.
-const REDIS_URL = process.env.REDIS_URL || process.env.REDIS_HOST;
-let redisClient: Redis | null = null;
-try {
-  if (REDIS_URL) {
-    redisClient = new Redis(process.env.REDIS_URL || {
-      host: process.env.REDIS_HOST,
-      port: process.env.REDIS_PORT ? parseInt(process.env.REDIS_PORT) : undefined,
-      password: process.env.REDIS_PASSWORD,
-    } as any);
-  }
-} catch (err) {
-  console.warn('Failed to initialize Redis client for rate limiting, falling back to in-memory limiter.', err);
-  redisClient = null;
-}
-
-// Expected env vars:
-// SENDGRID_API_KEY, EMAIL_FROM, EMAIL_TO
-const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
-const EMAIL_FROM = process.env.EMAIL_FROM || 'no-reply@rocxiongroup.co.za';
+// Gmail configuration
+const GMAIL_USER = process.env.GMAIL_USER;
+const GMAIL_PASSWORD = process.env.GMAIL_PASSWORD;
 const EMAIL_TO = process.env.EMAIL_TO || 'thuhu.mahlangu@gmail.com';
+const EMAIL_FROM = process.env.EMAIL_FROM || GMAIL_USER || 'no-reply@rocxiongroup.co.za';
 
-if (SENDGRID_API_KEY) {
-  sgMail.setApiKey(SENDGRID_API_KEY);
+// Create transporter for Gmail
+let transporter: nodemailer.Transporter | null = null;
+if (GMAIL_USER && GMAIL_PASSWORD) {
+  transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: GMAIL_USER,
+      pass: GMAIL_PASSWORD,
+    },
+  });
 }
 
 export async function POST(request: NextRequest) {
   try {
-    if (!SENDGRID_API_KEY) {
-      console.error('SendGrid API key is not configured');
+    if (!transporter) {
+      console.error('Gmail credentials are not configured');
       return NextResponse.json({ error: 'Email service not configured' }, { status: 500 });
     }
 
-    // Rate limiting by IP (Redis-backed when available, otherwise in-memory)
+    // Rate limiting by IP
     const xff = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || request.headers.get('cf-connecting-ip') || '';
     const ip = (xff.split(',')[0] || '').trim() || 'unknown';
 
-    if (redisClient) {
-      try {
-        const key = `contact_rl:${ip}`;
-        const windowSeconds = Math.max(1, Math.floor(RATE_LIMIT_WINDOW_MS / 1000));
-        const count = await redisClient.incr(key);
-        if (count === 1) {
-          await redisClient.expire(key, windowSeconds);
-        }
-        if (count > RATE_LIMIT_MAX) {
-          console.warn(`Rate limit exceeded for IP ${ip} (redis)`);
-          return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
-        }
-      } catch (redisErr) {
-        console.warn('Redis rate limit check failed, falling back to in-memory limiter', redisErr);
-        // fall through to in-memory below
-      }
-    }
-
-    // In-memory fallback limiter
     const now = Date.now();
     const timestamps = ipRequestMap.get(ip) || [];
     // Remove timestamps outside the window
@@ -119,11 +91,6 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    const nameVal = name;
-    const emailVal = email;
-    const phoneVal = phone;
-    const messageVal = message;
-
     // Validate required fields
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -150,16 +117,14 @@ export async function POST(request: NextRequest) {
       <hr />
       <p>${message.replace(/\n/g, '<br/>')}</p>`;
 
-    const msg = {
+    // Send email to recipient
+    await transporter.sendMail({
       to: EMAIL_TO,
-      from: EMAIL_FROM,
+      from: GMAIL_USER,
       subject,
       text: textBody,
       html: htmlBody,
-    };
-
-    // Send email
-    await sgMail.send(msg);
+    });
 
     console.log('Contact form email sent to recipient:', EMAIL_TO, { name, email, phone });
 
@@ -173,15 +138,13 @@ export async function POST(request: NextRequest) {
         <p>${message.replace(/\n/g, '<br/>')}</p>
         <p>Best regards,<br/>Rocxion Group</p>`;
 
-      const confirmMsg = {
+      await transporter.sendMail({
         to: email,
-        from: EMAIL_FROM,
+        from: GMAIL_USER,
         subject: confirmSubject,
         text: confirmText,
         html: confirmHtml,
-      };
-
-      await sgMail.send(confirmMsg);
+      });
       console.log('Confirmation email sent to visitor:', email);
     } catch (confirmError) {
       // Don't fail the whole request if confirmation fails; log for diagnostics

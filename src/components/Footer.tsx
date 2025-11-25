@@ -44,6 +44,12 @@ const Footer = () => {
               </div>
               <div className="flex items-center">
                 <Envelope className="w-4 h-4 mr-2 text-primary-400" />
+                <Link href="mailto:info@rocxion.co.za" className="hover:text-primary-400 transition-colors">
+                  info@rocxion.co.za
+                </Link>
+              </div>
+              <div className="flex items-center">
+                <Envelope className="w-4 h-4 mr-2 text-primary-400" />
                 <Link href="mailto:rramokolo@gmail.com" className="hover:text-primary-400 transition-colors">
                   rramokolo@gmail.com
                 </Link>
@@ -56,7 +62,7 @@ const Footer = () => {
         <div className="border-t border-secondary-700 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-neutral-400 text-sm">
-              © 2024 Rocxion Group. All rights reserved.
+              © 2026 Rocxion Group. All rights reserved.
             </p>
             <div className="flex space-x-4 mt-4 md:mt-0">
               <span className="text-neutral-400 text-sm">ECB Accredited</span>

@@ -138,7 +138,7 @@ export default function Projects() {
               Featured Project
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-              Showcasing our flagship commercial solar installation project
+              Showcasing our flagship commercial and residential solar installation and electrical maintenance projects.
             </p>
           </motion.div>
 
@@ -155,7 +155,7 @@ export default function Projects() {
                     <div className="mb-4 flex justify-center">
                       <Building className="w-20 h-20 text-primary-600" />
                     </div>
-                    <div className="text-primary-600 font-medium">Commercial Installation</div>
+                    <div className="text-primary-600 font-medium">Commercial/Farm System</div>
                   </div>
                 </div>
                 
@@ -198,14 +198,17 @@ export default function Projects() {
                   </div>
                   
                   <div className="bg-neutral-50 rounded-xl p-4 mb-6">
-                    <h4 className="font-semibold text-secondary-800 mb-2">Project Highlights</h4>
-                    <ul className="text-secondary-600 text-sm space-y-1">
-                      <li>• Complete energy audit and system design</li>
-                      <li>• Professional installation by certified team</li>
-                      <li>• Full system commissioning and testing</li>
-                      <li>• Ongoing maintenance and support</li>
+                    <h4 className="font-semibold text-secondary-800 mb-2">Featured Projects</h4>
+                    <ul className="text-secondary-600 text-sm space-y-2">
+                      <li>• <strong>Commercial/Farm System, 50kW 3 Phase, (60kW Battery Storage)</strong><br/>Windsor, Vanderbijlpark</li>
+                      <li>• <strong>Residential System, 32kW Single Phase, (60kW Battery Storage)</strong><br/>Arbour Park, Tzaneen</li>
+                      <li>• <strong>Residential System, 32kW Single Phase, (60kW Battery Storage)</strong><br/>Bendo, Polokwane</li>
                     </ul>
                   </div>
+                  
+                  <p className="text-secondary-600 mb-6 leading-relaxed">
+                    We have successfully completed numerous solar energy system projects nationwide, including comprehensive system design, professional installation, and full commissioning for both commercial and residential facilities.
+                  </p>
                   
                   <Link href="/gallery">
                     <Button variant="primary">

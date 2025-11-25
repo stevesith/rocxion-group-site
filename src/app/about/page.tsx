@@ -115,9 +115,7 @@ export default function About() {
                   <div className="bg-neutral-50 rounded-xl p-4">
                     <h4 className="font-semibold text-secondary-800 mb-2">Qualifications</h4>
                     <ul className="text-secondary-600 text-sm space-y-1">
-                      <li>• Electrical Engineering Degree</li>
-                      <li>• Renewable Energy Systems</li>
-                      <li>• Project Management</li>
+                      <li>• Electrical Engineering Diploma</li>
                     </ul>
                   </div>
                   
@@ -149,73 +147,97 @@ export default function About() {
               Compliance & Accreditations
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-              Certified and compliant with all relevant South African regulations and standards
+              Certified and compliant with relevant South African regulations and standards
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-8 text-center"
-            >
-              <div className="mb-6 flex justify-center">
-                <Trophy className="w-12 h-12 text-primary-500" />
-              </div>
-              <h3 className="text-2xl font-bold text-secondary-800 mb-4 font-heading">ECB Accredited</h3>
-              <p className="text-secondary-600 mb-4">
-                Accredited by the Engineering Council of South Africa, ensuring professional engineering standards.
-              </p>
-              <ul className="text-left text-secondary-700 space-y-2">
-                <li>• Professional engineering certification</li>
-                <li>• Continuous professional development</li>
-                <li>• Industry best practices</li>
-                <li>• Quality assurance standards</li>
-              </ul>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-gradient-to-br from-secondary-50 to-secondary-100 rounded-2xl p-8 text-center"
-            >
-              <div className="mb-6 flex justify-center">
-                <ShieldCheck className="w-12 h-12 text-primary-500" />
-              </div>
-              <h3 className="text-2xl font-bold text-secondary-800 mb-4 font-heading">CIDB Registered</h3>
-              <p className="text-secondary-600 mb-4">
-                Registered with the Construction Industry Development Board for construction activities.
-              </p>
-              <ul className="text-left text-secondary-700 space-y-2">
-                <li>• Construction industry compliance</li>
-                <li>• Contractor registration</li>
-                <li>• Project management standards</li>
-                <li>• Construction safety protocols</li>
-              </ul>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-gradient-to-br from-accent-50 to-accent-100 rounded-2xl p-8 text-center"
-            >
-              <div className="mb-6 flex justify-center">
-                <Award className="w-12 h-12 text-primary-500" />
-              </div>
-              <h3 className="text-2xl font-bold text-secondary-800 mb-4 font-heading">DoL Compliant</h3>
-              <p className="text-secondary-600 mb-4">
-                Full compliance with Department of Labour regulations and Occupational Health & Safety Act.
-              </p>
-              <ul className="text-left text-secondary-700 space-y-2">
-                <li>• Workplace safety compliance</li>
-                <li>• Employee health protection</li>
-                <li>• Safety training programs</li>
-                <li>• Risk assessment protocols</li>
-              </ul>
-            </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[{
+              logo: '/images/about/00_ECB_logo.svg',
+              alt: 'ECB Logo',
+              heading: 'ECB Accredited',
+              paragraph: 'Registered with the Electrical Conformance Board',
+              items: [
+                'Continuous professional development',
+                'Industry best practices',
+                'Quality assurance standards'
+              ],
+              gradient: 'from-primary-50 to-primary-100',
+              logoWidth: 120,
+              logoHeight: 120
+            }, {
+              logo: '/images/about/00_CIBD_logo.svg',
+              alt: 'CIBD Logo',
+              heading: 'CIDB Registered',
+              paragraph: 'Registered with the Construction Industry Development Board',
+              items: [
+                'Construction industry compliance',
+                'Contractor registration',
+                'Project management standards',
+                'Construction safety protocols'
+              ],
+              gradient: 'from-secondary-50 to-secondary-100'
+            }, {
+              logo: '/images/about/00_DoL_logo.svg',
+              alt: 'DoL Logo',
+              heading: 'DoL Compliant',
+              paragraph: 'Registered with the Department of Labour and OHS Act compliant',
+              items: [
+                'Workplace safety compliance',
+                'Employee health protection',
+                'Safety training programs',
+                'Risk assessment protocols'
+              ],
+              gradient: 'from-accent-50 to-accent-100'
+            }, {
+              logo: '/images/about/00_Sunsynk_logo.svg',
+              alt: 'Sunsynk Logo',
+              heading: 'Sunsynk Accreditation',
+              paragraph: 'An Approved Sunsynk Installer',
+              items: [],
+              gradient: 'from-blue-50 to-blue-100',
+              logoWidth: 240,
+              logoHeight: 240
+            }, {
+              logo: '/images/about/00_Deye_logo.svg',
+              alt: 'Deye Logo',
+              heading: 'Deye Accreditation',
+              paragraph: 'An Approved Deye Installer',
+              items: [],
+              gradient: 'from-blue-50 to-blue-100',
+              logoWidth: 140,
+              logoHeight: 140
+            }, {
+              logo: '/images/about/00_AREP_logo.svg',
+              alt: 'AREP Logo',
+              heading: 'AREP Accreditation',
+              paragraph: 'Registered with the Association for Renewable Energy Practitioners',
+              items: [],
+              gradient: 'from-blue-50 to-blue-100',
+              logoWidth: 240,
+              logoHeight: 240
+            }].map((section, idx) => (
+              <motion.div
+                key={section.heading}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 + idx * 0.1 }}
+                className={`bg-gradient-to-br ${section.gradient} rounded-2xl p-8 text-center flex flex-col items-center h-full`}
+              >
+                <div className="mb-6 flex justify-center w-full h-32 items-center">
+                  <Image src={section.logo} alt={section.alt} width={section.logoWidth || 198} height={section.logoHeight || 256} className="mx-auto" />
+                </div>
+                <h3 className="text-2xl font-bold text-secondary-800 mb-4 font-heading text-center">{section.heading}</h3>
+                <p className="text-secondary-600 mb-4 text-center min-h-12">
+                  {section.paragraph}
+                </p>
+                <ul className="text-left text-secondary-700 space-y-2 mx-auto max-w-xs flex-grow">
+                  {section.items.map(item => (
+                    <li key={item}>• {item}</li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

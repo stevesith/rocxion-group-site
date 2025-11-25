@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import HeroSection from '@/components/HeroSection';
 import ServiceCard from '@/components/ServiceCard';
 import ProjectCard from '@/components/ProjectCard';
@@ -80,21 +81,19 @@ export default function Home() {
               About Rocxion Group
             </h2>
             <p className="text-xl text-secondary-600 max-w-4xl mx-auto leading-relaxed">
-              Founded with a vision to transform South Africa's energy landscape, Rocxion Group combines 
-              technical expertise with innovative solutions to deliver exceptional solar energy services. 
-              Our ECB-accredited team ensures every project meets the highest standards of quality and compliance.
+              Founded with a vision to transform South Africa's renewable energy landscape, Rocxion Group combines technical expertise with innovative solutions to deliver exceptional renewable solar energy and electrical services. Our accredited team ensures every project meets the highest standards of quality and compliance.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-center"
             >
-              <div className="mb-4 flex justify-center">
-                <Trophy className="w-12 h-12 text-primary-500" />
+              <div className="mb-4 flex justify-center h-16 items-center">
+                <Image src="/images/about/00_ECB_logo.svg" alt="ECB Logo" width={80} height={80} />
               </div>
               <h3 className="text-xl font-semibold text-secondary-800 mb-2">ECB Accredited</h3>
               <p className="text-secondary-600">Certified by the Engineering Council of South Africa</p>
@@ -106,8 +105,8 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-center"
             >
-              <div className="mb-4 flex justify-center">
-                <ShieldCheck className="w-12 h-12 text-primary-500" />
+              <div className="mb-4 flex justify-center h-16 items-center">
+                <Image src="/images/about/00_CIBD_logo.svg" alt="CIBD Logo" width={180} height={80} />
               </div>
               <h3 className="text-xl font-semibold text-secondary-800 mb-2">CIDB Registered</h3>
               <p className="text-secondary-600">Construction Industry Development Board certified</p>
@@ -119,11 +118,50 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-center"
             >
-              <div className="mb-4 flex justify-center">
-                <Award className="w-12 h-12 text-primary-500" />
+              <div className="mb-4 flex justify-center h-16 items-center">
+                <Image src="/images/about/00_DoL_logo.svg" alt="DoL Logo" width={180} height={80} />
               </div>
               <h3 className="text-xl font-semibold text-secondary-800 mb-2">DoL Compliant</h3>
               <p className="text-secondary-600">Department of Labour and OHS Act compliant</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-center"
+            >
+              <div className="mb-4 flex justify-center h-16 items-center">
+                <Image src="/images/about/00_Sunsynk_logo.svg" alt="Sunsynk Logo" width={200} height={80} />
+              </div>
+              <h3 className="text-xl font-semibold text-secondary-800 mb-2">Sunsynk Accreditation</h3>
+              <p className="text-secondary-600">An Approved Sunsynk Installer</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="text-center"
+            >
+              <div className="mb-4 flex justify-center h-16 items-center">
+                <Image src="/images/about/00_Deye_logo.svg" alt="Deye Logo" width={120} height={80} />
+              </div>
+              <h3 className="text-xl font-semibold text-secondary-800 mb-2">Deye Accreditation</h3>
+              <p className="text-secondary-600">An Approved Deye Installer</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="text-center"
+            >
+              <div className="mb-4 flex justify-center h-16 items-center">
+                <Image src="/images/about/00_AREP_logo.svg" alt="AREP Logo" width={200} height={80} />
+              </div>
+              <h3 className="text-xl font-semibold text-secondary-800 mb-2">AREP Accreditation</h3>
+              <p className="text-secondary-600">Registered with the Association for Renewable Energy Practitioners</p>
             </motion.div>
           </div>
         </div>
@@ -141,8 +179,8 @@ export default function Home() {
             <h2 className="text-4xl font-bold text-secondary-800 mb-6 font-heading">
               Our Services
             </h2>
-            <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-              Comprehensive solar energy solutions from initial assessment to ongoing maintenance
+            <p className="text-xl text-secondary-600 max-w-4xl mx-auto">
+              Comprehensive renewable solar energy solutions from initial assessment to ongoing maintenance
             </p>
           </motion.div>
 
@@ -208,6 +246,16 @@ export default function Home() {
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0">
+                      <GeoAlt className="w-6 h-6 text-primary-500 mt-1" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-secondary-800">Address</h4>
+                      <p className="text-secondary-600">22 Dende Street<br />Nellmapius, Pretoria</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0">
                       <Telephone className="w-6 h-6 text-primary-500 mt-1" />
                     </div>
                     <div>
@@ -223,36 +271,48 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-secondary-800">Email</h4>
-                      <p className="text-secondary-600">info@rocxiongroup.co.za</p>
+                      <p className="text-secondary-600">info@rocxion.co.za</p>
                       <p className="text-sm text-secondary-500">We'll respond within 24 hours</p>
                     </div>
                   </div>
 
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0">
-                      <GeoAlt className="w-6 h-6 text-primary-500 mt-1" />
+                      <EnvelopePaper className="w-6 h-6 text-primary-500 mt-1" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-secondary-800">Service Area</h4>
-                      <p className="text-secondary-600">We're available nationwide</p>
+                      <h4 className="font-semibold text-secondary-800">Personal Email</h4>
+                      <p className="text-secondary-600">rramokolo@gmail.com</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white rounded-2xl p-6 shadow-soft">
+              <div className="bg-white rounded-2xl pt-6 pb-6 ps-6 pe-0 shadow-soft">
                 <h4 className="font-semibold text-secondary-800 mb-4">Why Choose Rocxion Group?</h4>
                 <ul className="space-y-3 text-secondary-600">
-                  <li className="flex items-center space-x-3">
-                    <Trophy className="w-5 h-5 text-primary-500 flex-shrink-0" />
-                    <span>ECB Accredited & CIDB Registered</span>
+                  <li className="flex items-start space-x-3">
+                    <span className="text-primary-500 flex-shrink-0">•</span>
+                    <span>ECB Accredited</span>
                   </li>
-                  <li className="flex items-center space-x-3">
-                    <ShieldCheck className="w-5 h-5 text-primary-500 flex-shrink-0" />
+                  <li className="flex items-start space-x-3">
+                    <span className="text-primary-500 flex-shrink-0">•</span>
                     <span>DoL Compliant & Safety Certified</span>
                   </li>
-                  <li className="flex items-center space-x-3">
-                    <Award className="w-5 h-5 text-primary-500 flex-shrink-0" />
+                  <li className="flex items-start space-x-3">
+                    <span className="text-primary-500 flex-shrink-0">•</span>
+                    <span>AREP Accreditation</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <span className="text-primary-500 flex-shrink-0">•</span>
+                    <span>Sunsynk & Deye Approved Installer</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <span className="text-primary-500 flex-shrink-0">•</span>
+                    <span>CIDB Registered</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <span className="text-primary-500 flex-shrink-0">•</span>
                     <span>Professional Installation & Support</span>
                   </li>
                 </ul>
