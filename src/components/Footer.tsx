@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { GeoAlt, Telephone, Envelope } from 'react-bootstrap-icons';
+import { MapPinIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 
 const Footer = () => {
   return (
@@ -33,23 +33,23 @@ const Footer = () => {
             <h3 className="text-lg text-gradient font-semibold mb-4 font-heading">Contact Info</h3>
             <div className="space-y-2 text-neutral-300">
               <div className="flex items-start">
-                <GeoAlt className="w-4 h-4 mr-2 mt-1 text-primary-400" />
+                <MapPinIcon className="w-4 h-4 mr-2 mt-1 text-primary-400" />
                 <span>22 Dende Street<br />Nellmapius, Pretoria</span>
               </div>
               <div className="flex items-center">
-                <Telephone className="w-4 h-4 mr-2 text-primary-400" />
+                <PhoneIcon className="w-4 h-4 mr-2 text-primary-400" />
                 <Link href="tel:0833138754" className="hover:text-primary-400 transition-colors">
                   083 313 8754
                 </Link>
               </div>
               <div className="flex items-center">
-                <Envelope className="w-4 h-4 mr-2 text-primary-400" />
+                <EnvelopeIcon className="w-4 h-4 mr-2 text-primary-400" />
                 <Link href="mailto:info@rocxion.co.za" className="hover:text-primary-400 transition-colors">
                   info@rocxion.co.za
                 </Link>
               </div>
               <div className="flex items-center">
-                <Envelope className="w-4 h-4 mr-2 text-primary-400" />
+                <EnvelopeIcon className="w-4 h-4 mr-2 text-primary-400" />
                 <Link href="mailto:rramokolo@gmail.com" className="hover:text-primary-400 transition-colors">
                   rramokolo@gmail.com
                 </Link>

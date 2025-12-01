@@ -17,7 +17,7 @@ const buttonVariants = cva(
           'active:text-gray-900',
           'focus:ring-primary-focus focus:ring-offset-background',
           'disabled:bg-primary-disabled disabled:text-text-muted',
-          'shadow-sm hover:shadow-md'
+          'shadow-sm'
         ].concat([
           'bg-[#28beef]',
           'hover:bg-[#1fa5d9]',
@@ -29,7 +29,7 @@ const buttonVariants = cva(
           'active:bg-white/20 active:text-white active:border-white',
           'focus:ring-white focus:ring-offset-background',
           'disabled:bg-white/30 disabled:text-white/50 disabled:border-white/50',
-          'shadow-lg hover:shadow-xl'
+          'shadow-lg'
         ],
         accent: [
           'bg-accent text-text-inverse',
@@ -37,7 +37,7 @@ const buttonVariants = cva(
           'active:bg-accent-active',
           'focus:ring-accent-focus focus:ring-offset-background',
           'disabled:bg-accent-disabled disabled:text-text-muted',
-          'shadow-sm hover:shadow-md'
+          'shadow-sm'
         ],
         outline: [
           'border border-primary text-primary bg-transparent',
@@ -59,7 +59,7 @@ const buttonVariants = cva(
           'active:bg-red-700',
           'focus:ring-red-200 focus:ring-offset-background',
           'disabled:bg-red-200 disabled:text-text-muted',
-          'shadow-sm hover:shadow-md'
+          'shadow-sm'
         ],
         success: [
           'bg-success text-text-inverse',
@@ -67,7 +67,7 @@ const buttonVariants = cva(
           'active:bg-green-700',
           'focus:ring-green-200 focus:ring-offset-background',
           'disabled:bg-green-200 disabled:text-text-muted',
-          'shadow-sm hover:shadow-md'
+          'shadow-sm'
         ]
       },
       size: {

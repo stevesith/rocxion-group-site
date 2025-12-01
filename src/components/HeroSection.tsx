@@ -44,12 +44,20 @@ const HeroSection = ({
 }: HeroSectionProps & { showLearnMore?: boolean }) => {
   showLearnMore = showLearnMore ?? true;
   const [current, setCurrent] = useState(0);
+  
+  // Create extended image array with duplicates at the end for seamless looping
+  const extendedImages = [...heroImages, ...heroImages.slice(0, 3)];
+  
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % heroImages.length);
-    }, 5000); // 5 seconds
+      setCurrent((prev) => {
+        const next = (prev + 1) % extendedImages.length;
+        // Loop back to start when we reach the duplicates
+        return next >= heroImages.length ? 0 : next;
+      });
+    }, 4000); // 4 seconds display time
     return () => clearInterval(timer);
-  }, [heroImages.length]);
+  }, [heroImages.length, extendedImages.length]);
 
   return (
     <section
@@ -57,20 +65,22 @@ const HeroSection = ({
       style={{ position: 'relative' }}
     >
       {/* Carousel of background images */}
-      <div className="absolute inset-0 w-full h-[135vh]">
-        <AnimatePresence mode="wait">
+      <div className="absolute inset-0 w-full h-[135vh] overflow-hidden">
+        <AnimatePresence>
           <motion.div
-            key={heroImages[current]}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2 }}
+            key={heroImages[current % heroImages.length]}
+            initial={{ opacity: 0, y: 200 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -200 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
             className="absolute inset-0 w-full h-full"
+            style={{ willChange: 'transform', zIndex: current }}
           >
             <Image
-              src={heroImages[current]}
+              src={extendedImages[current]}
               alt="Hero background"
               fill
+              unoptimized
               className="object-cover"
               priority
               style={{
@@ -116,7 +126,8 @@ const HeroSection = ({
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-primary-200 font-medium text-lg mb-4 text-white"
+              className="inline-flex items-center justify-center bg-black bg-opacity-30 text-white font-medium text-lg mb-4 px-6 h-10 rounded-full pt-8 sm:pt-0"
+              style={{ lineHeight: '1', minHeight: '2.5rem' }}
             >
               {subtitle}
             </motion.p>

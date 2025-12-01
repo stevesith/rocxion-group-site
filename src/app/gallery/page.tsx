@@ -1,60 +1,12 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import Image from 'next/image';
 import HeroSection from '@/components/HeroSection';
-import GalleryGrid from '@/components/GalleryGrid';
-import { FileEarmarkText, Wrench, BoxSeam, Clipboard, BarChart, StarFill } from 'react-bootstrap-icons';
-import type { GalleryItem } from '@/components/GalleryGrid';
+import ImageGallery from '@/components/ImageGallery';
 import Button from '@/components/Button';
 import Link from 'next/link';
 
 export default function Gallery() {
-  // Sample gallery data - replace with actual project images
-  const galleryImages = [
-    {
-      id: 13,
-      src: "/images/gallery/20230520_183344.jpg",
-      alt: "Solar installation 2023-05-20",
-      title: "Project Photo 2023-05-20",
-      category: "gallery"
-    },
-    {
-      id: 14,
-      src: "/images/gallery/20230528_151535.jpg",
-      alt: "Solar installation 2023-05-28",
-      title: "Project Photo 2023-05-28",
-      category: "gallery"
-    },
-    {
-      id: 15,
-      src: "/images/gallery/20240213_150039.jpg",
-      alt: "Solar installation 2024-02-13",
-      title: "Project Photo 2024-02-13",
-      category: "gallery"
-    },
-    {
-      id: 16,
-      src: "/images/gallery/20240820_120407.jpg",
-      alt: "Solar installation 2024-08-20",
-      title: "Project Photo 2024-08-20",
-      category: "gallery"
-    },
-    {
-      id: 17,
-      src: "/images/gallery/whatsapp-2025-06-12-194955-1.jpg",
-      alt: "WhatsApp image 1",
-      title: "WhatsApp Image 1",
-      category: "gallery"
-    },
-    {
-      id: 18,
-      src: "/images/gallery/whatsapp-2025-06-12-194955-2.jpg",
-      alt: "WhatsApp image 2",
-      title: "WhatsApp Image 2",
-      category: "gallery"
-    }
-  ];
-
   const projectHighlights = [
     {
       title: "50kW Commercial Installation",
@@ -85,8 +37,6 @@ export default function Gallery() {
     }
   ];
 
-  const weddingImages: GalleryItem[] = [];
-
   return (
     <div>
       <HeroSection
@@ -97,81 +47,36 @@ export default function Gallery() {
         ctaLink="/#contact"
       />
 
-      {/* Gallery Introduction */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-secondary-800 mb-6 font-heading">
-              Our Work in Pictures
-            </h2>
-            <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-              Browse through our collection of completed solar installations, from initial site assessment 
-              to final commissioning, demonstrating our commitment to quality and excellence.
-            </p>
-          </motion.div>
-
-          
-        </div>
-      </section>
-
       {/* Main Gallery */}
       <section className="py-20 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <GalleryGrid images={galleryImages} />
+          <ImageGallery />
         </div>
       </section>
 
       {/* Wedding Photography */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl font-bold text-secondary-800 mb-4 font-heading">Wedding Photography</h2>
-            <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-              Capturing the special moments — intimate portraits, joyful ceremonies, and candid celebrations.
-            </p>
-          </motion.div>
-
-          <div>
-            <GalleryGrid images={weddingImages} />
-          </div>
         </div>
       </section>
 
       {/* Project Highlights */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-secondary-800 mb-6 font-heading">
               Project Highlights
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
               Key statistics and achievements from our major solar installations
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {projectHighlights.map((project, index) => (
-              <motion.div
+              <div
                 key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-8"
+                className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-8 border border-neutral-200 shadow-soft transition-all duration-300"
               >
                 <h3 className="text-xl font-bold text-secondary-800 mb-4 font-heading">
                   {project.title}
@@ -188,7 +93,7 @@ export default function Gallery() {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -197,33 +102,30 @@ export default function Gallery() {
       {/* Before & After Concept */}
       <section className="py-20 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-secondary-800 mb-6 font-heading">
               Transformation Stories
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
               See how we transform energy consumption for our clients
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="bg-white rounded-2xl p-8 shadow-soft"
+            <div
+              className="bg-white rounded-2xl overflow-hidden shadow-soft border border-neutral-100"
             >
-              <div className="text-center mb-6">
-                <div className="text-5xl mb-4 text-primary-500 flex justify-center">
-                  <BarChart size={48} />
-                </div>
-                <h3 className="text-2xl font-bold text-secondary-800 font-heading">Before Solar</h3>
+              <div className="w-full h-48 bg-gradient-to-br from-red-100 to-red-50 flex items-center justify-center relative overflow-hidden">
+                <Image
+                  src="/images/gallery/01-loadshedding.jpg"
+                  alt="Before Solar - Power Outage"
+                  width={600}
+                  height={300}
+                  className="object-cover w-full h-full"
+                />
               </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-secondary-800 font-heading text-center mb-6">Before Solar</h3>
               <ul className="space-y-3 text-secondary-600">
                 <li className="flex items-center">
                   <span className="text-red-500 mr-3">•</span>
@@ -246,20 +148,23 @@ export default function Gallery() {
                   Vulnerable to load shedding
                 </li>
               </ul>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="bg-white rounded-2xl p-8 shadow-soft"
-            >
-              <div className="text-center mb-6">
-                <div className="text-5xl mb-4 text-primary-500 flex justify-center">
-                  <StarFill size={48} />
-                </div>
-                <h3 className="text-2xl font-bold text-secondary-800 font-heading">After Solar</h3>
               </div>
+            </div>
+
+            <div
+              className="bg-white rounded-2xl overflow-hidden shadow-soft border border-neutral-100"
+            >
+              <div className="w-full h-48 bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center relative overflow-hidden">
+                <Image
+                  src="/images/gallery/front-view-kids-spending-time-home_23-2150639968.jpg"
+                  alt="After Solar - Energy Independence"
+                  width={600}
+                  height={300}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold text-secondary-800 font-heading text-center mb-6">After Solar</h3>
               <ul className="space-y-3 text-secondary-600">
                 <li className="flex items-center">
                   <span className="text-green-500 mr-3">•</span>
@@ -282,7 +187,8 @@ export default function Gallery() {
                   Load shedding protection
                 </li>
               </ul>
-            </motion.div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -290,11 +196,7 @@ export default function Gallery() {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary-500 to-primary-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <div>
             <h2 className="text-4xl font-bold text-dark mb-6 font-heading">
               Ready to Create Your Success Story?
             </h2>
@@ -313,7 +215,7 @@ export default function Gallery() {
                 </Button>
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

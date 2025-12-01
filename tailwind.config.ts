@@ -110,7 +110,7 @@ export default {
         '2xl': '1rem',
       },
       boxShadow: {
-        'soft': '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.04)',
+        'soft': '0 1px 2px 0 rgba(0, 0, 0, 0.02), 0 0 1px 0 rgba(0, 0, 0, 0.01)',
       },
     },
   },

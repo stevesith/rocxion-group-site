@@ -1,8 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import HeroSection from '@/components/HeroSection';
-import { Sun, Trophy, ShieldCheck, Award, Bullseye, HandThumbsUp, Rocket, Tree, PersonBadge } from 'react-bootstrap-icons';
+import { SunIcon, CheckBadgeIcon, HandThumbUpIcon, RocketLaunchIcon, SparklesIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 
 export default function About() {
@@ -11,7 +10,7 @@ export default function About() {
       <HeroSection
         title="About Rocxion Group"
         subtitle="Our Story"
-        description="Leading South Africa towards a sustainable energy future with innovative solar solutions and expert technical services."
+        description="Founded with a vision to transform South Africa's renewable energy landscape, Rocxion Group combines technical expertise with innovative solutions to deliver exceptional renewable solar energy and electrical services. Our accredited team ensures every project meets the highest standards of quality and compliance."
         ctaText="Get in Touch"
         ctaLink="/#contact"
         showLearnMore={false}
@@ -21,11 +20,7 @@ export default function About() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
+            <div>
               <h2 className="text-3xl font-bold text-secondary-800 mb-6 font-heading">
                 Our Mission
               </h2>
@@ -42,114 +37,103 @@ export default function About() {
                 We're committed to helping businesses and organizations reduce their carbon footprint while achieving 
                 significant cost savings through intelligent energy solutions.
               </p>
-            </motion.div>
+            </div>
             
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+            <div
               className="bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl p-8 flex items-center justify-center"
             >
               <div className="text-center">
                 <div className="mb-4 flex justify-center">
-                  <Sun className="w-20 h-20 text-primary-600" />
+                  <SunIcon className="w-20 h-20 text-primary-600" />
                 </div>
                 <h3 className="text-2xl font-bold text-secondary-800 mb-2">Clean Energy</h3>
                 <p className="text-secondary-600">Sustainable solutions for a better tomorrow</p>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Director Profile */}
       <section className="py-20 bg-neutral-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-secondary-800 mb-6 font-heading">
               Leadership
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
               Meet the expert behind Rocxion Group's success
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto bg-white rounded-2xl shadow-soft p-8 md:p-12"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-              <div className="text-center">
-                <div className="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6 flex justify-start">
+          <div className="max-w-4xl mx-auto">
+            {/* Gradient Header with Profile */}
+            <div className="bg-gradient-to-r from-primary-600 to-accent-600 rounded-t-3xl p-8 md:p-12 border border-neutral-200">
+              <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+                {/* Profile Image */}
+                <div className="w-40 h-40 md:w-48 md:h-48 flex-shrink-0 rounded-full overflow-hidden border-4 border-white order-1">
                   <Image
-                    src="/images/about/rocky_director.jpg"
+                    src="https://rocxion.co.za//images/about/rocky_director.jpg"
                     alt="Rocky Ramokolo"
-                    width={192}
-                    height={192}
-                    className="object-cover"
+                    width={300}
+                    height={300}
+                    className="object-cover object-center w-full h-full"
                   />
                 </div>
-              </div>
-              
-              <div className="md:col-span-2">
-                <h3 className="text-3xl font-bold text-secondary-800 mb-4 font-heading">
-                  Rocky Ramokolo
-                </h3>
-                <p className="text-xl text-primary-600 mb-6 font-medium">
-                  Director & Lead Engineer
-                </p>
-                <p className="text-lg text-secondary-600 mb-6 leading-relaxed">
-                  With extensive experience in electrical engineering and renewable energy systems, 
-                  Rocky leads Rocxion Group with a commitment to excellence and innovation. His technical 
-                  expertise and vision have positioned the company as a leader in South Africa's solar energy sector.
-                </p>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="bg-neutral-50 rounded-xl p-4">
-                    <h4 className="font-semibold text-secondary-800 mb-2">Qualifications</h4>
-                    <ul className="text-secondary-600 text-sm space-y-1">
-                      <li>• Electrical Engineering Diploma</li>
-                    </ul>
-                  </div>
-                  
-                  <div className="bg-neutral-50 rounded-xl p-4">
-                    <h4 className="font-semibold text-secondary-800 mb-2">Experience</h4>
-                    <ul className="text-secondary-600 text-sm space-y-1">
-                      <li>• 10+ Years in Solar Industry</li>
-                      <li>• 50+ Successful Projects</li>
-                      <li>• ECB Accredited Professional</li>
-                    </ul>
-                  </div>
+
+                {/* Profile Info */}
+                <div className="flex flex-col items-center md:items-start order-2 w-full">
+                  <h3 className="text-2xl md:text-4xl font-bold text-secondary-900 mb-2 order-2">
+                    Rocky Ramokolo
+                  </h3>
+                  <p className="text-base md:text-lg text-secondary-700 font-medium order-3">
+                    Director & Lead Engineer
+                  </p>
                 </div>
               </div>
             </div>
-          </motion.div>
+
+            {/* Content Card Below */}
+            <div className="bg-white rounded-b-3xl p-8 md:p-10 relative z-10 border border-neutral-200 border-t-0">
+              <p className="text-secondary-600 mb-10 leading-relaxed text-center text-lg">
+                With extensive experience in electrical engineering and renewable energy systems, 
+                Rocky leads Rocxion Group with a commitment to excellence and innovation. His technical 
+                expertise and vision have positioned the company as a leader in South Africa's solar energy sector.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-8 mb-10">
+                <div>
+                  <h4 className="font-bold text-secondary-800 mb-3 text-sm uppercase tracking-wide">Qualifications</h4>
+                  <ul className="text-secondary-600 text-sm space-y-2">
+                    <li>• Electrical Engineering Diploma</li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h4 className="font-bold text-secondary-800 mb-3 text-sm uppercase tracking-wide">Experience</h4>
+                  <ul className="text-secondary-600 text-sm space-y-2">
+                    <li>• 10+ Years in Solar Industry</li>
+                    <li>• 50+ Successful Projects</li>
+                    <li>• ECB Accredited Professional</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Compliance & Accreditations */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-secondary-800 mb-6 font-heading">
               Compliance & Accreditations
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
               Certified and compliant with relevant South African regulations and standards
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[{
@@ -169,7 +153,7 @@ export default function About() {
               logo: '/images/about/00_CIBD_logo.svg',
               alt: 'CIBD Logo',
               heading: 'CIDB Registered',
-              paragraph: 'Registered with the Construction Industry Development Board',
+              paragraph: 'Construction Industry Development Board certified',
               items: [
                 'Construction industry compliance',
                 'Contractor registration',
@@ -217,11 +201,8 @@ export default function About() {
               logoWidth: 240,
               logoHeight: 240
             }].map((section, idx) => (
-              <motion.div
+              <div
                 key={section.heading}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 + idx * 0.1 }}
                 className={`bg-gradient-to-br ${section.gradient} rounded-2xl p-8 text-center flex flex-col items-center h-full`}
               >
                 <div className="mb-6 flex justify-center w-full h-32 items-center">
@@ -236,7 +217,7 @@ export default function About() {
                     <li key={item}>• {item}</li>
                   ))}
                 </ul>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -245,38 +226,30 @@ export default function About() {
       {/* Values Section */}
       <section className="py-20 bg-gradient-to-r from-primary-500 to-primary-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-dark mb-6 font-heading">
               Our Values
             </h2>
             <p className="text-xl text-primary-100 max-w-3xl mx-auto">
               The principles that guide every project and client relationship
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: <Bullseye className="w-10 h-10" />, title: "Excellence", description: "Delivering superior quality in every project" },
-              { icon: <HandThumbsUp className="w-10 h-10" />, title: "Integrity", description: "Building trust through transparent practices" },
-              { icon: <Rocket className="w-10 h-10" />, title: "Innovation", description: "Embracing cutting-edge technology solutions" },
-              { icon: <Tree className="w-10 h-10" />, title: "Sustainability", description: "Creating a greener future for generations" }
+              { icon: <CheckBadgeIcon className="w-10 h-10" />, title: "Excellence", description: "Delivering superior quality in every project" },
+              { icon: <HandThumbUpIcon className="w-10 h-10" />, title: "Integrity", description: "Building trust through transparent practices" },
+              { icon: <RocketLaunchIcon className="w-10 h-10" />, title: "Innovation", description: "Embracing cutting-edge technology solutions" },
+              { icon: <SparklesIcon className="w-10 h-10" />, title: "Sustainability", description: "Creating a greener future for generations" }
             ].map((value, index) => (
-              <motion.div
+              <div
                 key={value.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center text-dark"
               >
                 <div className="mb-4 flex justify-center text-dark">{value.icon}</div>
                 <h3 className="text-xl font-bold mb-2">{value.title}</h3>
                 <p className="text-primary-100">{value.description}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

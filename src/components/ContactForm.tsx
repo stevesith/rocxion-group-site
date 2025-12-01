@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { EnvelopePaperFill } from 'react-bootstrap-icons';
+import { EnvelopeIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
 import Button from './Button';
 
 interface ContactFormData {
@@ -135,10 +135,10 @@ const ContactForm = () => {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white rounded-2xl p-8 shadow-soft text-center"
+        className="bg-white rounded-2xl p-8 shadow-soft text-center border border-neutral-200"
       >
         <div className="mb-4 flex justify-center">
-          <EnvelopePaperFill className="w-16 h-16 text-primary-500" />
+          <EnvelopeIcon className="w-16 h-16 text-primary-500" />
         </div>
         <h3 className="text-2xl font-bold text-secondary-800 mb-4">Thank You!</h3>
         <p className="text-secondary-600 mb-6">
@@ -159,7 +159,7 @@ const ContactForm = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="bg-white rounded-2xl p-8 shadow-soft"
+      className="bg-white rounded-2xl p-8 shadow-soft border border-neutral-200"
     >
       <h3 className="text-2xl font-bold text-secondary-800 mb-6 font-heading">Send Us a Message</h3>
       
@@ -194,7 +194,7 @@ const ContactForm = () => {
               required
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-neutral-300 rounded-2xl focus:border-blue-500 focus:ring-0 transition-all duration-200"
+              className="w-full px-4 py-3 border border-neutral-200 rounded-2xl focus:border-blue-500 focus:ring-0 transition-all duration-200"
               placeholder="Your full name"
             />
             {fieldErrors.name && (
@@ -216,7 +216,7 @@ const ContactForm = () => {
               required
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-neutral-300 rounded-2xl focus:border-blue-500 focus:ring-0 transition-all duration-200"
+              className="w-full px-4 py-3 border border-neutral-200 rounded-2xl focus:border-blue-500 focus:ring-0 transition-all duration-200"
               placeholder="your.email@example.com"
             />
             {fieldErrors.email && (
@@ -238,7 +238,7 @@ const ContactForm = () => {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-neutral-300 rounded-2xl focus:border-blue-500 focus:ring-0 transition-all duration-200"
+            className="w-full px-4 py-3 border border-neutral-200 rounded-2xl focus:border-blue-500 focus:ring-0 transition-all duration-200"
             placeholder="083 123 4567"
           />
         </div>
@@ -254,7 +254,7 @@ const ContactForm = () => {
             rows={6}
             value={formData.message}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-neutral-300 rounded-2xl focus:border-blue-500 focus:ring-0 transition-all duration-200 resize-none"
+            className="w-full px-4 py-3 border border-neutral-200 rounded-2xl focus:border-blue-500 focus:ring-0 transition-all duration-200 resize-none"
             placeholder="Tell us about your project requirements..."
           />
             {fieldErrors.message && (
@@ -272,6 +272,7 @@ const ContactForm = () => {
           fullWidth
           loading={isSubmitting}
           disabled={isSubmitting}
+          rightIcon={!isSubmitting && <PaperAirplaneIcon className="w-5 h-5" />}
         >
           {isSubmitting ? 'Sending...' : 'Send Message'}
         </Button>

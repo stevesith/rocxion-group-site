@@ -1,9 +1,10 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import HeroSection from '@/components/HeroSection';
 import ServiceCard from '@/components/ServiceCard';
-import { BarChart, Lightning, Tools, Wrench, Bullseye, Power, ShieldCheck, HandThumbsUp } from 'react-bootstrap-icons';
+import ProcessCard from '@/components/ProcessCard';
+import BenefitCard from '@/components/BenefitCard';
+import { ChartBarIcon, SparklesIcon, WrenchScrewdriverIcon, WrenchIcon, CheckBadgeIcon, BoltIcon, ShieldCheckIcon, HandThumbUpIcon } from '@heroicons/react/24/outline';
 import Button from '@/components/Button';
 import Link from 'next/link';
 
@@ -12,7 +13,7 @@ export default function Services() {
     {
       title: "Energy Audit",
       description: "Comprehensive assessment of your current energy usage patterns and infrastructure to identify optimization opportunities and potential cost savings.",
-      icon: <BarChart className="w-8 h-8 text-primary-500" />,
+      icon: <ChartBarIcon className="w-8 h-8 text-accent-500" />,
       features: [
         "Detailed energy consumption analysis",
         "Load profiling and demand assessment",
@@ -25,7 +26,7 @@ export default function Services() {
     {
       title: "System Design",
       description: "Custom solar energy system design tailored to your specific requirements, site conditions, and energy goals using advanced modeling software.",
-      icon: <Lightning className="w-8 h-8 text-primary-500" />,
+      icon: <SparklesIcon className="w-8 h-8 text-accent-500" />,
       features: [
         "Comprehensive site assessment",
         "Custom system configuration",
@@ -38,7 +39,7 @@ export default function Services() {
     {
       title: "Installation & Commissioning",
       description: "Professional installation services by certified technicians ensuring optimal performance, safety compliance, and long-term reliability.",
-      icon: <Tools className="w-8 h-8 text-primary-500" />,
+      icon: <WrenchScrewdriverIcon className="w-8 h-8 text-accent-500" />,
       features: [
         "ECB certified installation team",
         "Quality assurance testing",
@@ -51,7 +52,7 @@ export default function Services() {
     {
       title: "Maintenance & Support",
       description: "Comprehensive maintenance programs and technical support services to ensure maximum system performance and longevity throughout the system lifecycle.",
-      icon: <Wrench className="w-8 h-8 text-primary-500" />,
+      icon: <WrenchIcon className="w-8 h-8 text-accent-500" />,
       features: [
         "Regular system inspections",
         "Performance monitoring and analysis",
@@ -109,30 +110,22 @@ export default function Services() {
       {/* Services Grid */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-secondary-800 mb-6 font-heading">
               Complete Solar Energy Solutions
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
               We offer comprehensive services covering every aspect of solar energy implementation
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <motion.div
+              <div
                 key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <ServiceCard {...service} />
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -141,38 +134,23 @@ export default function Services() {
       {/* Process Section */}
       <section className="py-20 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-secondary-800 mb-6 font-heading">
               Our Process
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
               A systematic approach ensuring successful project delivery from conception to completion
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {processSteps.map((step, index) => (
-              <motion.div
+            {processSteps.map((step) => (
+              <ProcessCard
                 key={step.step}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-8 shadow-soft hover:shadow-md transition-all duration-300"
-              >
-                <div className="flex items-center mb-6">
-                  <div className="bg-primary-500 text-dark rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg mr-4">
-                    {step.step}
-                  </div>
-                  <h3 className="text-xl
-                   font-bold text-secondary-800 font-heading">{step.title}</h3>
-                </div>
-                <p className="text-secondary-600 leading-relaxed">{step.description}</p>
-              </motion.div>
+                step={step.step}
+                title={step.title}
+                description={step.description}
+              />
             ))}
           </div>
         </div>
@@ -181,54 +159,44 @@ export default function Services() {
       {/* Why Choose Us */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-secondary-800 mb-6 font-heading">
               Why Choose Rocxion Group?
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
               Experience the difference that expertise, quality, and commitment make
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                icon: <Bullseye className="w-10 h-10 text-primary-500" />,
+                icon: <CheckBadgeIcon className="w-10 h-10" />,
                 title: "Expert Team",
                 description: "ECB-accredited specialists bringing deep experience in solar energy, electrical installations, and cutting-edge technological systems."
               },
               {
-                icon: <Power className="w-10 h-10 text-primary-500" />,
+                icon: <BoltIcon className="w-10 h-10" />,
                 title: "Quality Equipment",
                 description: "Premium solar components from internationally recognized manufacturers"
               },
               {
-                icon: <ShieldCheck className="w-10 h-10 text-primary-500" />,
+                icon: <ShieldCheckIcon className="w-10 h-10" />,
                 title: "Full Compliance",
                 description: "Complete adherence to all South African regulations and safety standards"
               },
               {
-                icon: <HandThumbsUp className="w-10 h-10 text-primary-500" />,
+                icon: <HandThumbUpIcon className="w-10 h-10" />,
                 title: "Ongoing Support",
                 description: "Comprehensive maintenance and technical support throughout system lifecycle"
               }
             ].map((benefit, index) => (
-              <motion.div
+              <BenefitCard
                 key={benefit.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-8"
-              >
-                <div className="mb-4 flex justify-center">{benefit.icon}</div>
-                <h3 className="text-xl font-bold text-secondary-800 mb-4 font-heading">{benefit.title}</h3>
-                <p className="text-secondary-600">{benefit.description}</p>
-              </motion.div>
+                icon={benefit.icon}
+                title={benefit.title}
+                description={benefit.description}
+              />
             ))}
           </div>
         </div>
@@ -237,11 +205,7 @@ export default function Services() {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary-500 to-primary-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <div>
             <h2 className="text-4xl font-bold text-dark mb-6 font-heading">
               Ready to Start Your Solar Journey?
             </h2>
@@ -260,7 +224,7 @@ export default function Services() {
                 </Button>
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

@@ -3,6 +3,7 @@ import { Open_Sans, Roboto } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -42,6 +43,7 @@ export default function RootLayout({
         <main className="flex-grow">
           {children}
         </main>
+        <ScrollToTopButton />
         <Footer />
       </body>
     </html>

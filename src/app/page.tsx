@@ -1,13 +1,12 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import HeroSection from '@/components/HeroSection';
 import ServiceCard from '@/components/ServiceCard';
 import ProjectCard from '@/components/ProjectCard';
 import Button from '@/components/Button';
 import Link from 'next/link';
-import { BarChart, Lightning, Tools, Wrench, Trophy, ShieldCheck, Award, Telephone, EnvelopePaper, GeoAlt } from 'react-bootstrap-icons';
+import { ChartBarIcon, BoltIcon, Cog6ToothIcon, WrenchIcon, MapPinIcon, PhoneIcon, EnvelopeIcon, CheckIcon } from '@heroicons/react/24/outline';
 import ContactForm from '@/components/ContactForm';
 
 export default function Home() {
@@ -15,7 +14,7 @@ export default function Home() {
     {
       title: "Energy Audit",
       description: "Comprehensive assessment of your current energy usage to identify optimization opportunities.",
-      icon: <BarChart className="w-8 h-8 text-primary-500" />,
+      icon: <ChartBarIcon className="w-8 h-8 text-primary-500" />,
       features: [
         "Detailed energy consumption analysis",
         "Cost-saving recommendations",
@@ -26,7 +25,7 @@ export default function Home() {
     {
       title: "System Design",
       description: "Custom solar energy system design tailored to your specific needs and requirements.",
-      icon: <Lightning className="w-8 h-8 text-primary-500" />,
+      icon: <BoltIcon className="w-8 h-8 text-primary-500" />,
       features: [
         "Site assessment and analysis",
         "Custom system configuration",
@@ -37,7 +36,7 @@ export default function Home() {
     {
       title: "Installation & Commissioning",
       description: "Professional installation services ensuring optimal performance and safety compliance.",
-      icon: <Tools className="w-8 h-8 text-primary-500" />,
+      icon: <Cog6ToothIcon className="w-8 h-8 text-primary-500" />,
       features: [
         "Certified installation team",
         "Quality assurance testing",
@@ -48,7 +47,7 @@ export default function Home() {
     {
       title: "Maintenance & Support",
       description: "Ongoing maintenance and support services to ensure maximum system performance.",
-      icon: <Wrench className="w-8 h-8 text-primary-500" />,
+      icon: <WrenchIcon className="w-8 h-8 text-primary-500" />,
       features: [
         "Regular system inspections",
         "Performance monitoring",
@@ -63,7 +62,7 @@ export default function Home() {
       {/* Hero Section */}
       <HeroSection
         title="Empowering South Africa through Smart Energy Solutions"
-        description="Leading provider of comprehensive solar energy services including energy audits, system design, professional installation, and ongoing maintenance support."
+        description="Leading provider of comprehensive renewable solar energy and electrical services including energy audits, system design, professional installation, and ongoing maintenance support."
         ctaText="Request a Quote"
         ctaLink="#contact"
       />
@@ -71,98 +70,63 @@ export default function Home() {
       {/* Company Introduction */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-secondary-800 mb-6 font-heading">
               About Rocxion Group
             </h2>
             <p className="text-xl text-secondary-600 max-w-4xl mx-auto leading-relaxed">
               Founded with a vision to transform South Africa's renewable energy landscape, Rocxion Group combines technical expertise with innovative solutions to deliver exceptional renewable solar energy and electrical services. Our accredited team ensures every project meets the highest standards of quality and compliance.
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-center"
-            >
+            <div className="text-center border border-neutral-200 rounded-lg p-6">
               <div className="mb-4 flex justify-center h-16 items-center">
-                <Image src="/images/about/00_ECB_logo.svg" alt="ECB Logo" width={80} height={80} />
+                <Image src="/images/about/00_ECB_logo.svg" alt="ECB Logo" width={80} height={80} className="grayscale" />
               </div>
               <h3 className="text-xl font-semibold text-secondary-800 mb-2">ECB Accredited</h3>
-              <p className="text-secondary-600">Certified by the Engineering Council of South Africa</p>
-            </motion.div>
+              <p className="text-secondary-600">Registered with the Electrical Conformance Board</p>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-center"
-            >
+            <div className="text-center border border-neutral-200 rounded-lg p-6">
               <div className="mb-4 flex justify-center h-16 items-center">
-                <Image src="/images/about/00_CIBD_logo.svg" alt="CIBD Logo" width={180} height={80} />
+                <Image src="/images/about/00_CIBD_logo.svg" alt="CIBD Logo" width={180} height={80} className="grayscale" />
               </div>
               <h3 className="text-xl font-semibold text-secondary-800 mb-2">CIDB Registered</h3>
-              <p className="text-secondary-600">Construction Industry Development Board certified</p>
-            </motion.div>
+              <p className="text-secondary-600">Registered with the Construction Industry Development Board</p>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-center"
-            >
+            <div className="text-center border border-neutral-200 rounded-lg p-6">
               <div className="mb-4 flex justify-center h-16 items-center">
-                <Image src="/images/about/00_DoL_logo.svg" alt="DoL Logo" width={180} height={80} />
+                <Image src="/images/about/00_DoL_logo.svg" alt="DoL Logo" width={180} height={80} className="grayscale" />
               </div>
               <h3 className="text-xl font-semibold text-secondary-800 mb-2">DoL Compliant</h3>
-              <p className="text-secondary-600">Department of Labour and OHS Act compliant</p>
-            </motion.div>
+              <p className="text-secondary-600">Registered with the Department of Labour and OHS Act compliant</p>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-center"
-            >
+            <div className="text-center border border-neutral-200 rounded-lg p-6">
               <div className="mb-4 flex justify-center h-16 items-center">
-                <Image src="/images/about/00_Sunsynk_logo.svg" alt="Sunsynk Logo" width={200} height={80} />
+                <Image src="/images/about/00_Sunsynk_logo.svg" alt="Sunsynk Logo" width={200} height={80} className="grayscale" />
               </div>
               <h3 className="text-xl font-semibold text-secondary-800 mb-2">Sunsynk Accreditation</h3>
               <p className="text-secondary-600">An Approved Sunsynk Installer</p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-center"
-            >
+            <div className="text-center border border-neutral-200 rounded-lg p-6">
               <div className="mb-4 flex justify-center h-16 items-center">
-                <Image src="/images/about/00_Deye_logo.svg" alt="Deye Logo" width={120} height={80} />
+                <Image src="/images/about/00_Deye_logo.svg" alt="Deye Logo" width={120} height={80} className="grayscale" />
               </div>
               <h3 className="text-xl font-semibold text-secondary-800 mb-2">Deye Accreditation</h3>
               <p className="text-secondary-600">An Approved Deye Installer</p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-center"
-            >
+            <div className="text-center border border-neutral-200 rounded-lg p-6">
               <div className="mb-4 flex justify-center h-16 items-center">
-                <Image src="/images/about/00_AREP_logo.svg" alt="AREP Logo" width={200} height={80} />
+                <Image src="/images/about/00_AREP_logo.svg" alt="AREP Logo" width={200} height={80} className="grayscale" />
               </div>
               <h3 className="text-xl font-semibold text-secondary-800 mb-2">AREP Accreditation</h3>
               <p className="text-secondary-600">Registered with the Association for Renewable Energy Practitioners</p>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -170,75 +134,50 @@ export default function Home() {
       {/* Services Section */}
       <section className="py-20 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-secondary-800 mb-6 font-heading">
               Our Services
             </h2>
             <p className="text-xl text-secondary-600 max-w-4xl mx-auto">
               Comprehensive renewable solar energy solutions from initial assessment to ongoing maintenance
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
+            {services.map((service) => (
+              <div key={service.title}>
                 <ServiceCard {...service} />
-              </motion.div>
+              </div>
             ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-center mt-12"
-          >
+          <div className="text-center mt-12">
             <Link href="/services">
-              <Button variant="primary" size="lg" className="shadow-sm hover:shadow-md transform hover:-translate-y-1">
+              <Button variant="primary" size="lg" className="transform hover:-translate-y-1">
                 View All Services
               </Button>
             </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
 
 
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-neutral-50">
+      <section id="contact" className="py-12 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-secondary-800 mb-6 font-heading">
               Get Your Free Quote
             </h2>
             <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
               Ready to make the switch to solar? Contact us today for a personalized consultation and free quote.
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Information */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="space-y-8"
-            >
+            <div className="space-y-8">
               <div>
                 <h3 className="text-2xl font-bold text-secondary-800 mb-6 font-heading">
                   Contact Information
@@ -246,7 +185,7 @@ export default function Home() {
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0">
-                      <GeoAlt className="w-6 h-6 text-primary-500 mt-1" />
+                      <MapPinIcon className="w-6 h-6 text-primary-500 mt-1" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-secondary-800">Address</h4>
@@ -256,7 +195,7 @@ export default function Home() {
 
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0">
-                      <Telephone className="w-6 h-6 text-primary-500 mt-1" />
+                      <PhoneIcon className="w-6 h-6 text-primary-500 mt-1" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-secondary-800">Phone</h4>
@@ -267,7 +206,7 @@ export default function Home() {
 
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0">
-                      <EnvelopePaper className="w-6 h-6 text-primary-500 mt-1" />
+                      <EnvelopeIcon className="w-6 h-6 text-primary-500 mt-1" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-secondary-800">Email</h4>
@@ -278,7 +217,7 @@ export default function Home() {
 
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0">
-                      <EnvelopePaper className="w-6 h-6 text-primary-500 mt-1" />
+                      <EnvelopeIcon className="w-6 h-6 text-primary-500 mt-1" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-secondary-800">Personal Email</h4>
@@ -317,16 +256,12 @@ export default function Home() {
                   </li>
                 </ul>
               </div>
-            </motion.div>
+            </div>
 
             {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
+            <div>
               <ContactForm />
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
