@@ -40,14 +40,22 @@ export default function About() {
             </div>
             
             <div
-              className="bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl p-8 flex items-center justify-center"
+              className="bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl p-8 flex items-center justify-center overflow-hidden relative h-96 lg:h-[500px]"
             >
-              <div className="text-center">
+              <Image
+                src="/images/hero/d43e05127412991.61416e174dba4.jpg"
+                alt="Solar Energy Installation"
+                fill
+                className="object-cover rounded-2xl"
+              />
+              {/* Fallback gradient overlay in case image doesn't load */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-100/50 to-primary-200/50 rounded-2xl" />
+              <div className="relative z-10 text-center">
                 <div className="mb-4 flex justify-center">
-                  <SunIcon className="w-20 h-20 text-primary-600" />
+                  <SunIcon className="w-20 h-20 text-white drop-shadow-lg" />
                 </div>
-                <h3 className="text-2xl font-bold text-secondary-800 mb-2">Clean Energy</h3>
-                <p className="text-secondary-600">Sustainable solutions for a better tomorrow</p>
+                <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">Clean Energy</h3>
+                <p className="text-white drop-shadow-lg">Sustainable solutions for a better tomorrow</p>
               </div>
             </div>
           </div>
