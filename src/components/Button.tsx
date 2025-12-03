@@ -150,7 +150,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <motion.div
         whileHover={!isDisabled ? { scale: 1.02 } : {}}
         whileTap={!isDisabled ? { scale: 0.98 } : {}}
-        className="inline-block"
+        className={fullWidth ? "w-full block" : "inline-block"}
       >
         <button
           ref={ref}

@@ -424,20 +424,20 @@ export default function Projects() {
       <section className="py-20 bg-gradient-to-r from-primary-500 to-primary-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div>
-            <h2 className="text-4xl font-bold text-white mb-6 font-heading">
+            <h2 className="text-4xl font-bold text-secondary-800 mb-6 font-heading">
               Ready to Join Our Success Stories?
             </h2>
             <p className="text-xl text-primary-100 mb-8 max-w-3xl mx-auto">
               Let us design and install a custom solar energy solution for your business or organization.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/#contact">
-                <Button variant="primary" size="lg" className="transform hover:-translate-y-1">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center w-full">
+              <Link href="/#contact" className="w-full sm:w-auto">
+                <Button variant="primary" size="lg" fullWidth={true} className="transform hover:-translate-y-1">
                   Start Your Project
                 </Button>
               </Link>
-              <Link href="tel:0833138754">
-                <Button variant="outline" size="lg">
+              <Link href="tel:0833138754" className="w-full sm:w-auto">
+                <Button variant="outline" size="lg" fullWidth={true}>
                   Call 083 313 8754
                 </Button>
               </Link>

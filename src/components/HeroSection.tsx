@@ -126,8 +126,8 @@ const HeroSection = ({
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center justify-center bg-black bg-opacity-30 text-white font-medium text-lg mb-4 px-6 h-10 rounded-full pt-8 sm:pt-0"
-              style={{ lineHeight: '1', minHeight: '2.5rem' }}
+              className="flex items-center justify-center bg-black bg-opacity-30 text-white font-medium text-lg mb-4 px-6 h-10 rounded-full sm:inline-flex w-fit sm:w-auto mx-auto"
+              style={{ lineHeight: 'normal', minHeight: '2.5rem' }}
             >
               {subtitle}
             </motion.p>
@@ -154,16 +154,16 @@ const HeroSection = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full"
           >
-            <Link href={ctaLink}>
-              <Button variant="primary" size="lg" className="transform hover:-translate-y-1 drop-shadow-xl">
+            <Link href={ctaLink} className="w-full sm:w-auto">
+              <Button variant="primary" size="lg" fullWidth={true} className="sm:fullWidth-false transform hover:-translate-y-1 drop-shadow-xl">
                 {ctaText}
               </Button>
             </Link>
             {showLearnMore && (
-              <Link href="/about">
-                <Button variant="outline" size="lg" className="drop-shadow-xl text-white">
+              <Link href="/about" className="w-full sm:w-auto">
+                <Button variant="outline" size="lg" fullWidth={true} className="sm:fullWidth-false drop-shadow-xl text-white">
                   Learn More
                 </Button>
               </Link>

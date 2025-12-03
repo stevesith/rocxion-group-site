@@ -203,14 +203,14 @@ export default function Gallery() {
             <p className="text-xl text-primary-100 mb-8 max-w-3xl mx-auto">
               Join our growing portfolio of satisfied clients and start your journey to energy independence.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/#contact">
-                <Button variant="primary" size="lg" className="transform hover:-translate-y-1">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center w-full">
+              <Link href="/#contact" className="w-full sm:w-auto">
+                <Button variant="primary" size="lg" fullWidth={true} className="transform hover:-translate-y-1">
                   Get Your Quote
                 </Button>
               </Link>
-              <Link href="/projects">
-                <Button variant="outline" size="lg">
+              <Link href="/projects" className="w-full sm:w-auto">
+                <Button variant="outline" size="lg" fullWidth={true}>
                   View All Projects
                 </Button>
               </Link>

@@ -212,14 +212,14 @@ export default function Services() {
             <p className="text-xl text-primary-100 mb-8 max-w-3xl mx-auto">
               Contact us today for a free consultation and discover how our solar energy solutions can benefit your business.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/#contact">
-                <Button variant="primary" size="lg" className="transform hover:-translate-y-1">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center w-full">
+              <Link href="/#contact" className="w-full sm:w-auto">
+                <Button variant="primary" size="lg" fullWidth={true} className="transform hover:-translate-y-1">
                   Get Free Consultation
                 </Button>
               </Link>
-              <Link href="tel:0833138754">
-                <Button variant="outline" size="lg">
+              <Link href="tel:0833138754" className="w-full sm:w-auto">
+                <Button variant="outline" size="lg" fullWidth={true}>
                   Call 083 313 8754
                 </Button>
               </Link>

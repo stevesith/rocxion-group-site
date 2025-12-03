@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   description: "Empowering South Africa through Smart Energy Solutions. Leading provider of comprehensive solar energy services including design, installation, and maintenance.",
   keywords: "solar energy, renewable energy, South Africa, energy audit, solar installation, maintenance, ECB accredited",
   authors: [{ name: "Rocxion Group" }],
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     title: "Rocxion Group - Smart Energy Solutions",
     description: "Empowering South Africa through Smart Energy Solutions",
